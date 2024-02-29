@@ -1,11 +1,7 @@
-class Name ():
-    totalNames = 0
+class Name:
 
-    def __init__(self, name, id):
+    def __init__(self, name: str, name_id: int):
         self.name = name
-        self.id = id
+        self.id = name_id
 
-    def __str__(self):
-        return "{ id : " + str(self.id) + " name : " + self.name + " }"
 
-    # nameDict = ['', '', '', '', '', '', '', '', '', '']
