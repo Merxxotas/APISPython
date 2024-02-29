@@ -1,0 +1,24 @@
+version: '3.8'
+networks:
+  trainingNetwork:
+    external: true
+services:
+  jenkins:
+    image: jenkins/jenkins:alpine3.19-jdk21 # Use the image
+    # If you are building a custom Jenkins image from a Dockerfile, use the build section
+    # build:
+    #   context: dockerjenkins
+    ports:
+      - "8000:8080"
+      - "60000:50000"
+    container_name: jenkins-DockerCompose
+    privileged: true
+    user: root
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - trainingNetwork
+volumes:
+  jenkins-data:
+    external: true
